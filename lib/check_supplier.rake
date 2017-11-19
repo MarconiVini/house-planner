@@ -26,6 +26,7 @@ task :check_water_supply do
     mailer_service.deliver_mails
     puts "Existe interrupção na data: #{Time.now.strftime("%d/%m/%Y")}"
   end
+  puts situacao
   puts "#{Time.now.strftime("%d/%m/%Y")} - Finalizado rotina diária"
   puts "-" * 30
 end
