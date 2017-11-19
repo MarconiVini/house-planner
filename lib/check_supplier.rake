@@ -18,11 +18,11 @@ task :check_water_supply do
   situacao  = parsed.css('.content-table .table-form')[0].css('.table-form')[1].text.gsub(/\s+/, " ")
   situacao2 = parsed.css('.content-table .table-form')[0].css('.table-form')[2].text.gsub(/\s+/, " ")
 
-  content = endereco + "\n" + situacao + "\n" + situacao2
-  mailer_service = Mailer.new(content)
-  mailer_service.deliver_mails
-  
-  # if situacao.include?("Não existe interrupção")
-  #   puts "Não haverá interupção no servico"
-  # end
+  if !situacao.include?("Não existe interrupção")
+    #haverá interrupção, notificar os usuários.
+    content = endereco + "\n" + situacao + "\n" + situacao2
+    mailer_service = Mailer.new(content)
+    mailer_service.deliver_mails
+    puts "Existe interrupção na data: #{Time.now.strftime("%d/%m/%Y")}"
+  end
 end
