@@ -7,12 +7,26 @@ GEM
     method_source (0.9.0)
     mini_portile2 (2.3.0)
     multi_xml (0.6.0)
+    mustermann (1.0.1)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    rack (2.0.3)
+    rack-protection (2.0.0)
+      rack
     rake (12.3.0)
+    ruby_http_client (3.3.0)
+    sendgrid-ruby (5.2.0)
+      ruby_http_client (~> 3.2)
+      sinatra (>= 1.4.7, < 3)
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0)
+      tilt (~> 2.0)
+    tilt (2.0.8)
 
 PLATFORMS
   ruby
@@ -22,6 +36,7 @@ DEPENDENCIES
   nokogiri
   pry
   rake
+  sendgrid-ruby
 
 BUNDLED WITH
    1.16.0

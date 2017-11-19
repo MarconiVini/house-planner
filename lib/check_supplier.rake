@@ -1,12 +1,14 @@
 require 'httparty'
 require 'pry'
 require 'nokogiri'
+require 'sendgrid-ruby'
+include SendGrid
 
 desc "Check if custumer will have water supply"
 task :check_water_supply do
-  response = HTTParty.post('http://www.sanasa.com.br/ura-quadrodeavisos/exibeResultado.asp',
+  response = HTTParty.post(@config["sanasa"]["url"],
   {
-      body: { codc: '3350063' },
+      body: { codc: @config["user"]["code"] },
       headers: { 
           'Content-Type' => 'application/x-www-form-urlencoded', 
           'charset' => 'utf-8'
@@ -23,4 +25,17 @@ task :check_water_supply do
   if situacao.include?("Não existe interrupção")
     puts "Não haverá interupção no servico"
   end
+
+  
+  from = Email.new(email: 'cardosounicamp@gmail.com')
+  to = Email.new(email: 'cardosounicamp@gmail.com')
+  subject = 'Sending with SendGrid is Fun'
+  content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
+  mail = Mail.new(from, subject, to, content)
+  
+  sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+  response = sg.client.mail._('send').post(request_body: mail.to_json)
+  puts response.status_code
+  puts response.body
+  puts response.headers
 end
