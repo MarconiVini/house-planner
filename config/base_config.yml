@@ -1,4 +1,11 @@
 sanasa:
   url: http://www.sanasa.com.br/ura-quadrodeavisos/exibeResultado.asp
-user:
+address:
   code: 3350063
+users:
+  email:
+    - cardosounicamp@gmail.com
+    - taisa881@gmail.com
+
+mail_subject: Status do suprimento de água diário
+mail_sender: cardosounicamp@gmail.com
