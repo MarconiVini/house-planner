@@ -4,10 +4,11 @@ require 'nokogiri'
 
 desc "Check if custumer will have water supply"
 task :check_water_supply do
+  puts "-" * 30
   puts "#{Time.now.strftime("%d/%m/%Y - %H:%M")} - Iniciando a verificação de rotina diário"
-  response = HTTParty.post(@@config["sanasa"]["url"],
+  response = HTTParty.post($config["sanasa"]["url"],
   {
-    body: { codc: @@config["address"]["code"] },
+    body: { codc: $config["address"]["code"] },
     headers: { 
       'Content-Type' => 'application/x-www-form-urlencoded', 
       'charset' => 'utf-8'
