@@ -20,7 +20,7 @@ task :check_water_supply do
   situacao  = parsed.css('.content-table .table-form')[0].css('.table-form')[1].text.gsub(/\s+/, " ")
   situacao2 = parsed.css('.content-table .table-form')[0].css('.table-form')[2].text.gsub(/\s+/, " ")
 
-  if situacao.include?("Não existe interrupção")
+  if !situacao.include?("Não existe interrupção")
     #haverá interrupção, notificar os usuários.
     content = endereco + "\n" + situacao + "\n" + situacao2
     mailer_service = Mailer.new(content)
