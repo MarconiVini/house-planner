@@ -5,7 +5,7 @@ require 'nokogiri'
 desc "Check if custumer will have water supply"
 task :check_water_supply do
   puts "-" * 30
-  puts "#{Time.now.strftime("%d/%m/%Y - %H:%M")} - Iniciando a verificação de rotina diário"
+  puts "#{Time.now.strftime("%d/%m/%Y - %H:%M")} - Iniciando a verificação de rotina"
   response = HTTParty.post($config["sanasa"]["url"],
   {
     body: { codc: $config["address"]["code"] },
@@ -28,6 +28,6 @@ task :check_water_supply do
     puts "Existe interrupção na data: #{Time.now.strftime("%d/%m/%Y")}"
   end
   puts situacao
-  puts "#{Time.now.strftime("%d/%m/%Y - %H:%M")} - Finalizado rotina diária"
+  puts "#{Time.now.strftime("%d/%m/%Y - %H:%M")} - Finalizado rotina"
   puts "-" * 30
 end
