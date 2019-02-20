@@ -5,7 +5,7 @@ require 'nokogiri'
 desc "Check if custumer will have water supply"
 task :check_water_supply do
   puts "-" * 30
-  puts "#{Time.now.strftime("%d/%m/%Y - %H:%M")} - Iniciando a verificação de rotina"
+  puts "#{Time.now.strftime("%d/%m/%Y - %H:%M")} - Iniciando a nova verificação de rotina"
   response = HTTParty.post($config["sanasa"]["url"],
   {
     body: { codc: $config["address"]["code"] },
@@ -17,7 +17,7 @@ task :check_water_supply do
   })
 
   parsed = Nokogiri::HTML(response.body.strip.gsub(/\t/, '').gsub(/\r/, '').gsub(/\n/, ''))
-  
+
   endereco  = parsed.css('.content-table .table-form')[0].css('.table-form')[0].text.gsub(/\s+/, " ")
   situacao  = parsed.css('.content-table .table-form')[0].css('.table-form')[1].text.gsub(/\s+/, " ")
   situacao2 = parsed.css('.content-table .table-form')[0].css('.table-form')[2].text.gsub(/\s+/, " ")
