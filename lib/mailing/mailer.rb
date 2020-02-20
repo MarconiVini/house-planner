@@ -6,6 +6,7 @@ class Mailer
 
   def initialize(content)
     @content = content
+    @separator = ' - '
   end
 
   def deliver_mails
@@ -18,9 +19,9 @@ class Mailer
   private
 
   def build_mail(email)
-    from = Email.new(email: $config["mail_sender"])
+    from = Email.new(email: $config['mail_sender'])
     to = Email.new(email: email)
-    subject = Time.now.strftime("%d/%m/%Y") + " " + $config["mail_subject"]
+    subject = $config['app_name'] + @separator + Time.now.strftime('%d/%m/%Y') + @separator + $config["mail_subject"]
     content = Content.new(type: 'text/plain', value: @content)
     mail = Mail.new(from, subject, to, content)
   end

@@ -6,6 +6,6 @@ users:
   email:
     - cardosounicamp@gmail.com
     - taisa881@gmail.com
-
+app_name: House Planner
 mail_subject: Status do suprimento de água
 mail_sender: cardosounicamp@gmail.com
