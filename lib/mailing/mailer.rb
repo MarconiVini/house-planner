@@ -22,7 +22,7 @@ class Mailer
     from = Email.new(email: $config['mail_sender'])
     to = Email.new(email: email)
     subject = $config['app_name'] + @separator + Time.now.strftime('%d/%m/%Y') + @separator + $config["mail_subject"]
-    content = Content.new(type: 'text/plain', value: @content)
+    content = Content.new(type: 'text/html', value: @content)
     mail = Mail.new(from, subject, to, content)
   end
 
