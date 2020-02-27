@@ -1,7 +1,9 @@
 sanasa:
   url: http://www.sanasa.com.br/ura-quadrodeavisos/exibeResultado.asp
 address:
-  code: 1635978 #3350063
+  code: 3349297 # mauro brandemburgo  
+  #1635978 
+  #3350063
 users:
   email:
     - cardosounicamp@gmail.com

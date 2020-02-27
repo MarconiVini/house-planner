@@ -37,7 +37,7 @@ task :check_water_supply do
     content = endereco + "\n" + situacao + "\n" + situacao2
     mailer_service = Mailer.new(content)
     mailer_service.deliver_mails
-    puts "Existe interrupção na data: #{Time.now.strftime("%d/%m/%Y")}"
+    puts "Existe interrupção na data: #{Time.now.strftime('%d/%m/%Y')}"
   end
   puts situacao
   puts "#{Time.now.strftime('%d/%m/%Y - %H:%M')} - Finalizado rotina"

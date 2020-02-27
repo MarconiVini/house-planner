@@ -6,7 +6,7 @@ class Mailer
 
   def initialize(content)
     @content = content
-    @separator = ' - '
+    @separator = ' \n '
   end
 
   def deliver_mails
