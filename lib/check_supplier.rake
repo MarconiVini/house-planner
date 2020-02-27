@@ -3,8 +3,8 @@ require 'pry'
 require 'nokogiri'
 
 def format_situacao(situacao)
-  situacao.gsub!('Hora d', '\nHora d')
-  situacao.gsub!('Data d', '\nData d')
+  situacao.gsub!('Hora d', '<br />Hora d')
+  situacao.gsub!('Data d', '<br />Data d')
   situacao.strip
 end
 
